@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Arty ScrollWizardry</title>
+</head>
+
+<body>
+
+  <style>
+    body{
+      background: #151515;
+    }
+
+    .one {
+  width: 60%;
+  height: 50vh;
+  margin: 5vh 0;
+  background: red; }
+
+.color-one {
+  background: #3c4245; }
+
+.color-two {
+  background: #5f6769; }
+
+.color-three {
+  background: #719192; }
+
+.color-four {
+  background: #dfcdc3; }
+
+.color-five {
+  background: #3c4245; }
+
+.color-six {
+  background: #5f6769; }
+
+.color-seven {
+  background: #719192; }
+    
+  </style>
+
+<div class="one color-one"></div>
+<div class="one color-two"></div>
+<div class="one color-three"></div>
+<div class="one color-four"></div>
+<div id="my-trigger" class="one color-five"></div>
+<div class="one color-six"></div>
+<div class="one color-seven"></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TimelineMax.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.20.2/TweenMax.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.4/lodash.min.js"></script>
+  <script src="../dist/scrollwizardry.umd.js"></script>
+
+  <script>
+    var controller = new ScrollWizardry.Controller({
+      addIndicators: true,
+      loglevel: 3,
+    });
+
+    var tween = TweenMax.to('.color-five', 0.4, {
+      backgroundColor: 'white',
+    });
+
+    new ScrollWizardry.Scene({
+        triggerElement: '#my-trigger',
+        triggerHook: 0.3,
+        loglevel: 2
+      })
+      .setTween(tween)
+      .addIndicators()
+      .addTo(controller);
+
+
+  </script>
+
+</body>
+
+</html>
